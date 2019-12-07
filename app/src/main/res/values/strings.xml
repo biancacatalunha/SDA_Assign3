@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">SDA_assign3_project</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="app_name">SDA Assign3 2019 Bianca Catalunha</string>
+    <string name="tab_text_1">Welcome</string>
+    <string name="tab_text_2">Product List</string>
+    <string name="tab_text_3">Order T-shirt</string>
 </resources>
