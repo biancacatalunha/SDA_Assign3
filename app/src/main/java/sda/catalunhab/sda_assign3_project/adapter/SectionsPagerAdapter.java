@@ -1,4 +1,4 @@
-package sda.catalunhab.sda_assign3_project.ui.main;
+package sda.catalunhab.sda_assign3_project.adapter;
 
 import android.content.Context;
 

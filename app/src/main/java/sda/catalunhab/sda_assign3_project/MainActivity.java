@@ -1,16 +1,13 @@
 package sda.catalunhab.sda_assign3_project;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
-import sda.catalunhab.sda_assign3_project.ui.main.SectionsPagerAdapter;
+import sda.catalunhab.sda_assign3_project.adapter.SectionsPagerAdapter;
 
 /**
  * SelectionPageAdapter returns the fragment correspondent to the tab selected
