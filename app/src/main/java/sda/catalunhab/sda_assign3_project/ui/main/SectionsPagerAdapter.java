@@ -13,11 +13,18 @@ import sda.catalunhab.sda_assign3_project.R;
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
+ *
+ * Defined constants for the tabs so the switch is more readable
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
+
+    private static final int WELCOME = 0;
+    private static final int PRODUCTS = 1;
+    private static final int ORDER = 2;
+
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -29,6 +36,17 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
+
+//        switch (position) {
+//            case WELCOME:
+//                return new x;
+//            case PRODUCTS:
+//                return new x;
+//            case ORDER:
+//                return new x;
+//                default:
+//                   return null;
+//        }
         return PlaceholderFragment.newInstance(position + 1);
     }
 

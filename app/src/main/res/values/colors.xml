@@ -4,6 +4,7 @@
     <color name="colorPrimary">#018D7B</color>
     <color name="colorSecondary">#019480</color>
     <color name="colorAccent">#7B59C4</color>
+    <color name="tabSelectedText">#1B0E4D</color>
 
     <color name="colorBackground">#C5C5C5</color>
     <color name="colorSurface">#ffffff</color>
