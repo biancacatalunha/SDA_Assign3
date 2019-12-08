@@ -3,5 +3,12 @@
     <string name="tab_text_1">Welcome</string>
     <string name="tab_text_2">Product List</string>
     <string name="tab_text_3">Order T-shirt</string>
-    <string name="welcome_message">Welcome to Online T-shirt provider \nSelect a product and then place the order \nPlease, spend all your money</string>
+    <string name="welcome_message">Welcome to Online T-shirt provider \nSelect a product and then place your order \nPlease, spend all your money</string>
+    <string name="customer_name">Your name</string>
+    <string name="delivery_address">Delivery address</string>
+    <string name="camera_text">Take a photo for your T-shirt</string>
+    <string name="radio_button_1">Delivery</string>
+    <string name="radio_button_2">Collection</string>
+    <string name="radio_group_label">Select an option:</string>
+    <string name="camera_image_description">Camera Image</string>
 </resources>
