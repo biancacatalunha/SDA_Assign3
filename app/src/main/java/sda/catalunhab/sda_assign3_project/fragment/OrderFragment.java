@@ -12,17 +12,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+
 import com.bumptech.glide.Glide;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import sda.catalunhab.sda_assign3_project.R;
 
 import static android.app.Activity.RESULT_OK;
@@ -39,7 +44,7 @@ public class OrderFragment extends Fragment {
     private TextView deliveryAddress;
     private ImageView cameraImage;
     private String currentPhotoPath;
-
+    private Uri photoURI;
 
     public OrderFragment() {
         // Required empty public constructor
@@ -67,7 +72,30 @@ public class OrderFragment extends Fragment {
 
         setLocationDropdownValues(root);
 
+        Button sendButton = root.findViewById(R.id.sendOrderButton);
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                emailIntent(v);
+            }
+        });
+
         return root;
+    }
+
+    private void emailIntent(View view) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("*/*");
+
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"bianca.catalunha@gmail.com"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Order request");
+        intent.putExtra(Intent.EXTRA_TEXT, "Test for now");
+        intent.putExtra(Intent.EXTRA_STREAM, photoURI);
+
+        if (intent.resolveActivity(view.getContext().getPackageManager()) != null) {
+            startActivity(intent);
+            Log.d(TAG, "Email opened");
+        }
     }
 
     private void takePhotoIntent(View view) {
@@ -82,7 +110,7 @@ public class OrderFragment extends Fragment {
             }
 
             if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(view.getContext(),
+                photoURI = FileProvider.getUriForFile(view.getContext(),
                         view.getContext().getPackageName() + ".provider", photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
@@ -137,7 +165,7 @@ public class OrderFragment extends Fragment {
         );
 
         // Save a file: path for use with ACTION_VIEW intents
-        currentPhotoPath = image.getAbsolutePath();
+        currentPhotoPath = image.getPath();
         Log.i(TAG, "Photo path: " + currentPhotoPath);
 
         return image;
