@@ -2,13 +2,10 @@ package sda.catalunhab.sda_assign3_project.fragment;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import androidx.fragment.app.Fragment;
 
 import sda.catalunhab.sda_assign3_project.R;
 
@@ -29,5 +26,4 @@ public class WelcomeFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_welcome, container, false);
     }
-
 }
