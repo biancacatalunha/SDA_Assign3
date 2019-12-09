@@ -10,36 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RadioGroup
-            android:id="@+id/storeRadioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:visibility="invisible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/deliveryAddress">
-
-            <RadioButton
-                android:id="@+id/radioButton3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/radio_button_3" />
-
-            <RadioButton
-                android:id="@+id/radioButton4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/radio_button_4" />
-
-            <RadioButton
-                android:id="@+id/radioButton5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/radio_button_5" />
-        </RadioGroup>
-
         <Button
             android:id="@+id/sendOrderButton"
             android:layout_width="wrap_content"
@@ -140,6 +110,16 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cameraText" />
+
+        <Spinner
+            android:id="@+id/daysDropDown"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/deliveryAddress" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
