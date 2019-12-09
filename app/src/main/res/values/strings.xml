@@ -9,6 +9,9 @@
     <string name="camera_text">Take a photo for your T-shirt</string>
     <string name="radio_button_1">Delivery</string>
     <string name="radio_button_2">Collection</string>
+    <string name="radio_button_3">Lucan</string>
+    <string name="radio_button_4">Cavan</string>
+    <string name="radio_button_5">Terenure</string>
     <string name="radio_group_label">Select an option:</string>
     <string name="camera_image_description">Camera Image</string>
     <string name="send_order_button">Send Order</string>

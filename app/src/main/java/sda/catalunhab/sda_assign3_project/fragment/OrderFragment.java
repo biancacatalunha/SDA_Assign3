@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -19,7 +17,7 @@ import sda.catalunhab.sda_assign3_project.R;
  */
 public class OrderFragment extends Fragment {
 
-    private Spinner daysDropDown;
+    private RadioGroup storesRadioGroup;
     private TextView deliveryAddress;
 
     public OrderFragment() {
@@ -35,21 +33,12 @@ public class OrderFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_order, container, false);
 
         deliveryAddress = root.findViewById(R.id.deliveryAddress);
+        storesRadioGroup = root.findViewById(R.id.storeRadioGroup);
 
         RadioGroup radioGroup = root.findViewById(R.id.radioGroup);
         setOnCheckedChangeListener(radioGroup);
 
-        setDaysDropdownValues(root);
-
         return root;
-    }
-
-    private void setDaysDropdownValues(View root) {
-        daysDropDown = root.findViewById(R.id.daysDropDown);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(root.getContext(),
-                R.array.collection_period, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        daysDropDown.setAdapter(adapter);
     }
 
     private void setOnCheckedChangeListener(RadioGroup radioGroup) {
@@ -60,10 +49,10 @@ public class OrderFragment extends Fragment {
                 switch (checkedId) {
                     case R.id.radioButton1:
                             deliveryAddress.setVisibility(View.VISIBLE);
-                            daysDropDown.setVisibility(View.INVISIBLE);//set to invisible so they won't be on top of each other
+                            storesRadioGroup.setVisibility(View.INVISIBLE);//set to invisible so they won't be on top of each other
                         break;
                     case R.id.radioButton2:
-                            daysDropDown.setVisibility(View.VISIBLE);
+                            storesRadioGroup.setVisibility(View.VISIBLE);
                             deliveryAddress.setVisibility(View.INVISIBLE);
                         break;
                 }
