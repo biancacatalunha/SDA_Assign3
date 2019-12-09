@@ -5,10 +5,19 @@
     <string name="tab_text_3">Order T-shirt</string>
     <string name="welcome_message">Welcome to Online T-shirt provider \nSelect a product and then place your order \nPlease, spend all your money</string>
     <string name="customer_name">Your name</string>
-    <string name="delivery_address">Delivery address</string>
+    <string name="delivery_address_hint">Delivery address</string>
     <string name="camera_text">Take a photo for your T-shirt</string>
     <string name="radio_button_1">Delivery</string>
     <string name="radio_button_2">Collection</string>
     <string name="radio_group_label">Select an option:</string>
     <string name="camera_image_description">Camera Image</string>
+    <string name="send_order_button">Send Order</string>
+    <string-array name="collection_period">
+        <item>" 2"</item>
+        <item>" 3"</item>
+        <item>" 4"</item>
+        <item>" 5"</item>
+        <item>10</item>
+        <item>14</item>
+    </string-array>
 </resources>
