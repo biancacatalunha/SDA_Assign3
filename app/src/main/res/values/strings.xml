@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">SDA Assign3 2019 Bianca Catalunha</string>
+
     <string name="tab_text_1">Welcome</string>
     <string name="tab_text_2">Product List</string>
     <string name="tab_text_3">Order T-shirt</string>
+
     <string name="welcome_message">Welcome to Online T-shirt provider \nSelect a product and then place your order \nPlease, spend all your money</string>
-    <string name="customer_name">Your name</string>
+
+    <string name="customer_name_hint">Your name</string>
     <string name="delivery_address_hint">Delivery address</string>
     <string name="camera_text">Take a photo for your T-shirt</string>
     <string name="radio_button_1">Delivery</string>
@@ -12,6 +15,18 @@
     <string name="radio_group_label">Select an option:</string>
     <string name="camera_image_description">Camera Image</string>
     <string name="send_order_button">Send Order</string>
+
+    <string name="error_msg_name">Name is mandatory</string>
+    <string name="error_msg_delivery_or_collection">Select delivery or collection</string>
+    <string name="error_msg_delivery">Enter the delivery address</string>
+
+    <string name="email_subject">Order Request</string>
+    <string name="email_to">bianca.catalunha@gmail.com</string>
+    <string name="email_body_part1">Hello \nPlease find my order attached.\n</string>
+    <string name="email_body_part2">\nKind Regards, \n</string>
+    <string name="email_body_collection_store">Collection store:\u0020</string>
+    <string name="email_body_delivery_address">Delivery address:\u0020</string>
+
     <string-array name="collection_stores">
         <item>Cavan</item>
         <item>Phibsboro</item>

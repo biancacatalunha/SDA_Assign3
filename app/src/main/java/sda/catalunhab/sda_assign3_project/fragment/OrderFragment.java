@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
@@ -29,13 +30,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import sda.catalunhab.sda_assign3_project.R;
+import sda.catalunhab.sda_assign3_project.util.Order;
 
 import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OrderFragment extends Fragment {
+public class OrderFragment extends Fragment  {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final String TAG = "OrderFragment";
@@ -43,8 +45,7 @@ public class OrderFragment extends Fragment {
     private Spinner locationDropDown;
     private TextView deliveryAddress;
     private ImageView cameraImage;
-    private String currentPhotoPath;
-    private Uri photoURI;
+    private Order order;
 
     public OrderFragment() {
         // Required empty public constructor
@@ -55,7 +56,9 @@ public class OrderFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_order, container, false);
+        final View root = inflater.inflate(R.layout.fragment_order, container, false);
+
+        order = new Order();
 
         deliveryAddress = root.findViewById(R.id.deliveryAddress);
 
@@ -76,7 +79,7 @@ public class OrderFragment extends Fragment {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                emailIntent(v);
+                emailIntent(root);
             }
         });
 
@@ -84,18 +87,42 @@ public class OrderFragment extends Fragment {
     }
 
     private void emailIntent(View view) {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("*/*");
+        if (isValid(view)) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("*/*");
 
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"bianca.catalunha@gmail.com"});
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Order request");
-        intent.putExtra(Intent.EXTRA_TEXT, "Test for now");
-        intent.putExtra(Intent.EXTRA_STREAM, photoURI);
+            intent.putExtra(Intent.EXTRA_EMAIL, order.getMailTo(view));
+            intent.putExtra(Intent.EXTRA_SUBJECT, order.getSubject(view));
+            intent.putExtra(Intent.EXTRA_TEXT, order.getEmailBody(view));
+            intent.putExtra(Intent.EXTRA_STREAM, order.getPhotoURI());
 
-        if (intent.resolveActivity(view.getContext().getPackageManager()) != null) {
-            startActivity(intent);
-            Log.d(TAG, "Email opened");
+            if (intent.resolveActivity(view.getContext().getPackageManager()) != null) {
+                startActivity(intent);
+                Log.d(TAG, "Email opened");
+            }
         }
+    }
+
+    private boolean isValid(View view) {
+        if (order.isNameEmpty(view)) {
+            Toast toast = Toast.makeText(view.getContext(), order.getNameErrorMsg(view), Toast.LENGTH_SHORT);
+            toast.show();
+            return false;
+        }
+
+        if(!order.isDeliverySelected(view) && !order.isCollectionSelected(view)) {
+            Toast toast = Toast.makeText(view.getContext(), order.getDeliveryOrCollectionErrorMsg(view), Toast.LENGTH_SHORT);
+            toast.show();
+            return false;
+        }
+
+        if(order.isDeliverySelected(view) && order.isDeliveryAddressEmpty(view)) {
+            Toast toast = Toast.makeText(view.getContext(), order.getDeliveryIsRequiredErrorMessage(view), Toast.LENGTH_SHORT);
+            toast.show();
+            return false;
+        }
+
+        return true;
     }
 
     private void takePhotoIntent(View view) {
@@ -110,8 +137,9 @@ public class OrderFragment extends Fragment {
             }
 
             if (photoFile != null) {
-                photoURI = FileProvider.getUriForFile(view.getContext(),
+                Uri photoURI = FileProvider.getUriForFile(view.getContext(),
                         view.getContext().getPackageName() + ".provider", photoFile);
+                order.setPhotoURI(photoURI);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
             }
@@ -121,12 +149,12 @@ public class OrderFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Glide.with(this).load(currentPhotoPath).into(cameraImage);
+            Glide.with(this).load(order.getPhotoPath()).into(cameraImage);
         }
     }
 
     private void setLocationDropdownValues(View root) {
-        locationDropDown = root.findViewById(R.id.daysDropDown);
+        locationDropDown = root.findViewById(R.id.storeLocation);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(root.getContext(),
                 R.array.collection_stores, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -165,8 +193,8 @@ public class OrderFragment extends Fragment {
         );
 
         // Save a file: path for use with ACTION_VIEW intents
-        currentPhotoPath = image.getPath();
-        Log.i(TAG, "Photo path: " + currentPhotoPath);
+        order.setPhotoPath(image.getPath());
+        Log.i(TAG, "Photo path: " + order.getPhotoPath());
 
         return image;
     }
