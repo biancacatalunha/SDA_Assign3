@@ -10,26 +10,26 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/imageItem"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="75dp"
         android:background="@color/colorAccent"
         android:contentDescription="@string/border_description" />
 
     <ImageView
         android:id="@+id/imageItem"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="216dp"
         android:contentDescription="@string/product_image_description"
-        android:src="@drawable/belly_jacket" />
+        android:src="@drawable/casual_dress" />
 
     <TextView
         android:id="@+id/productText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
+        android:layout_below="@+id/imageItem"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="18dp"
-        android:layout_toEndOf="@+id/imageItem"
         android:text="@string/product_text"
         android:textSize="17sp" />
 
@@ -38,10 +38,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/productText"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="18dp"
-        android:layout_toEndOf="@+id/imageItem"
         android:text="@string/product_price"
         android:textColor="@color/tabSelectedText"
         android:textSize="17sp" />
