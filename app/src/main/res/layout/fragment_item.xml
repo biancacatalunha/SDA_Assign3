@@ -11,7 +11,7 @@
         android:layout_height="1dp"
         android:layout_below="@+id/imageItem"
         android:layout_marginTop="75dp"
-        android:background="@color/colorAccent"
+        android:background="@color/border"
         android:contentDescription="@string/border_description" />
 
     <ImageView
@@ -30,6 +30,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="18dp"
+        android:textColor="@color/productName"
         android:text="@string/product_text"
         android:textSize="17sp" />
 
@@ -42,7 +43,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="18dp"
+        android:textColor="@color/productPrice"
         android:text="@string/product_price"
-        android:textColor="@color/tabSelectedText"
         android:textSize="17sp" />
 </RelativeLayout>

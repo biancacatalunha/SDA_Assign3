@@ -18,11 +18,10 @@ import sda.catalunhab.sda_assign3_project.type.Product;
 public class ProductsFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_item_list, container, false);
+        final View root = inflater.inflate(R.layout.fragment_item_list, container, false);
 
         RecyclerView recyclerView = root.findViewById(R.id.recyclerView);
 
@@ -45,6 +44,9 @@ public class ProductsFragment extends Fragment {
         products.add(new Product("Belly Top", "€26.00", R.drawable.belly_top));
         products.add(new Product("Jacket", "€41.00", R.drawable.jacket));
         products.add(new Product("Half Sleeve Top", "€19.00", R.drawable.half_sleeve_top));
+        products.add(new Product("Cardigan", "€29.00", R.drawable.cardigan));
+        products.add(new Product("Cleavage Shirt ", "€31.00", R.drawable.cleavege_shirt));
+        products.add(new Product("Formal Shirt ", "€32.00", R.drawable.formal_shirt));
         products.add(new Product("Casual Dress", "€42.00", R.drawable.casual_dress));
         products.add(new Product("Party Dress", "€75.00", R.drawable.party_dress));
 
