@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import sda.catalunhab.sda_assign3_project.R;
 import sda.catalunhab.sda_assign3_project.fragment.OrderFragment;
+import sda.catalunhab.sda_assign3_project.fragment.ProductsFragment;
 import sda.catalunhab.sda_assign3_project.fragment.WelcomeFragment;
 
 /**
@@ -43,7 +44,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case WELCOME:
                 return new WelcomeFragment();
             case PRODUCTS:
-                return new WelcomeFragment();
+                return new ProductsFragment();
             case ORDER:
                 return new OrderFragment();
                 default:

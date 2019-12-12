@@ -14,6 +14,8 @@
     <string name="radio_button_2">Collection</string>
     <string name="radio_group_label">Select an option:</string>
     <string name="camera_image_description">Camera Image</string>
+    <string name="product_image_description">Product Image</string>
+    <string name="border_description">Border</string>
     <string name="send_order_button">Send Order</string>
 
     <string name="error_msg_name">Name is mandatory</string>
@@ -26,6 +28,10 @@
     <string name="email_body_part2">\nKind Regards, \n</string>
     <string name="email_body_collection_store">Collection store:\u0020</string>
     <string name="email_body_delivery_address">Delivery address:\u0020</string>
+
+    <string name="product_text">Product</string>
+    <string name="product_price">€37.90</string>
+
 
     <string-array name="collection_stores">
         <item>Cavan</item>

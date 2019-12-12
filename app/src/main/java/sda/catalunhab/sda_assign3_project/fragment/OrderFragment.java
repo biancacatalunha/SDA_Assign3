@@ -42,6 +42,7 @@ public class OrderFragment extends Fragment  {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final String TAG = "OrderFragment";
 
+    //maybe declare these variables in the help method
     private Spinner locationDropDown;
     private TextView deliveryAddress;
     private ImageView cameraImage;
@@ -107,18 +108,21 @@ public class OrderFragment extends Fragment  {
         if (order.isNameEmpty(view)) {
             Toast toast = Toast.makeText(view.getContext(), order.getNameErrorMsg(view), Toast.LENGTH_SHORT);
             toast.show();
+            Log.d(TAG, "Input validation failed - Name is empty");
             return false;
         }
 
         if(!order.isDeliverySelected(view) && !order.isCollectionSelected(view)) {
             Toast toast = Toast.makeText(view.getContext(), order.getDeliveryOrCollectionErrorMsg(view), Toast.LENGTH_SHORT);
             toast.show();
+            Log.d(TAG, "Input validation failed - Delivery nor Collection selected");
             return false;
         }
 
         if(order.isDeliverySelected(view) && order.isDeliveryAddressEmpty(view)) {
             Toast toast = Toast.makeText(view.getContext(), order.getDeliveryIsRequiredErrorMessage(view), Toast.LENGTH_SHORT);
             toast.show();
+            Log.d(TAG, "Input validation failed - Delivery address is empty");
             return false;
         }
 
@@ -133,7 +137,7 @@ public class OrderFragment extends Fragment  {
             try {
                 photoFile = createImageFile(view);
             } catch (IOException e) {
-                Log.i(TAG, "Error occurred while creating file");
+                Log.i(TAG, "Error occurred while creating photo file");
             }
 
             if (photoFile != null) {
@@ -150,6 +154,7 @@ public class OrderFragment extends Fragment  {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Glide.with(this).load(order.getPhotoPath()).into(cameraImage);
+            Log.d(TAG, "Photo returned and displayed");
         }
     }
 
@@ -159,6 +164,7 @@ public class OrderFragment extends Fragment  {
                 R.array.collection_stores, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationDropDown.setAdapter(adapter);
+        Log.d(TAG, "Location dropdown attached to view");
     }
 
     private void setOnCheckedChangeListener(RadioGroup radioGroup) {
@@ -170,10 +176,12 @@ public class OrderFragment extends Fragment  {
                     case R.id.radioButton1:
                             deliveryAddress.setVisibility(View.VISIBLE);
                             locationDropDown.setVisibility(View.INVISIBLE);//set to invisible so they won't be on top of each other
+                            Log.d(TAG, "Delivery selected");
                         break;
                     case R.id.radioButton2:
                             locationDropDown.setVisibility(View.VISIBLE);
                             deliveryAddress.setVisibility(View.INVISIBLE);
+                            Log.d(TAG, "Collection selected");
                         break;
                 }
             }
