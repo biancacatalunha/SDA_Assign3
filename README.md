@@ -38,3 +38,7 @@ https://android.jlelse.eu/androids-new-image-capture-from-a-camera-using-file-pr
 
 Retrieving the saved image
 https://developer.android.com/reference/androidx/core/content/FileProvider#GetUri
+
+Images
+https://pixabay.com/users/deedee51-128913/
+https://pixabay.com/users/sara_torda-888816/
