@@ -10,13 +10,13 @@ import com.google.android.material.tabs.TabLayout;
 import sda.catalunhab.sda_assign3_project.adapter.SectionsPagerAdapter;
 
 /**
+ * DCU - SDA - Assignment 3
+ *
  * SelectionPageAdapter returns the fragment correspondent to the tab selected
  * ViewPager is a swipe navigation patterns
  * SelectionPageAdapter is set with ViewPager which is set with the TabLayout
  *
- *
- * SDA - DCU
- * @author Bianca Catalunha
+ * @author Bianca Catalunha <bianca.catalunha2@mail.dcu.ie>
  * @since December 2019
  */
 
@@ -34,6 +34,5 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-
     }
 }

@@ -2,14 +2,25 @@ package sda.catalunhab.sda_assign3_project.util;
 
 import android.net.Uri;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import sda.catalunhab.sda_assign3_project.R;
 
-//helper class
-//helper methods so the fragment class looks cleaner
+/**
+ * DCU - SDA - Assignment 3
+ *
+ * This is a helper class for the Order Fragment, it gets and sets fields.
+ * It was created in order to keep the fragment class cleaner,
+ * more readable and only containing the business logic.
+ *
+ * @author Bianca Catalunha <bianca.catalunha2@mail.dcu.ie>
+ * @since December 2019
+ */
 public class Order {
 
     private Uri photoURI;
@@ -53,6 +64,26 @@ public class Order {
         return delivery.getText().toString();
     }
 
+    public EditText getDeliveryAddressEditText(View view) {
+        return view.findViewById(R.id.deliveryAddress);
+    }
+
+    public ImageView getCameraImage(View view) {
+        return view.findViewById(R.id.cameraImage);
+    }
+
+    public RadioGroup getRadioGroup(View view) {
+        return view.findViewById(R.id.radioGroup);
+    }
+
+    public Button getSendButton(View view) {
+        return view.findViewById(R.id.sendOrderButton);
+    }
+
+    public Spinner getStoreLocation(View view) {
+        return view.findViewById(R.id.storeLocation);
+    }
+
     private String getCollectionStore(View view) {
         Spinner store = view.findViewById(R.id.storeLocation);
         return store.getSelectedItem().toString();
@@ -86,10 +117,6 @@ public class Order {
 
     public String getDeliveryIsRequiredErrorMessage(View view) {
         return view.getContext().getString(R.string.error_msg_delivery);
-    }
-
-    public Spinner getLocationDropdown(View view) {
-        return view.findViewById(R.id.storeLocation);
     }
 
     public boolean isNameEmpty(View view) {

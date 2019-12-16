@@ -15,27 +15,53 @@ import sda.catalunhab.sda_assign3_project.R;
 import sda.catalunhab.sda_assign3_project.adapter.ProductsAdapter;
 import sda.catalunhab.sda_assign3_project.type.Product;
 
+/**
+ * DCU - SDA - Assignment 3
+ *
+ * Fragment representing the Products tab
+ * Asks the user for a name, photo with the t-shirt design, delivery address or
+ * store for collection.
+ * Then opens an email intent with the data entered by the user
+ *
+ * @author Bianca Catalunha <bianca.catalunha2@mail.dcu.ie>
+ * @since December 2019
+ */
 public class ProductsFragment extends Fragment {
 
+    /**
+     * This method is called when it's the first time the fragment's UI is drawn.
+     * It inflates the container into the fragment layout, sets the layout manager
+     * to grid with two columns for the recycler view layout and creates the
+     * products adapter which will attach each product to the view.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to.  The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed
+     * from a previous saved state as given here.
+     *
+     * @return Return the View for the fragment's UI, or null.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        // Inflate the layout for this fragment
         final View root = inflater.inflate(R.layout.fragment_item_list, container, false);
 
         RecyclerView recyclerView = root.findViewById(R.id.recyclerView);
-
-        // use a linear layout manager
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(root.getContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
-
-        // specify an adapter (see also next example)
         RecyclerView.Adapter mAdapter = new ProductsAdapter(getProductList());
         recyclerView.setAdapter(mAdapter);
 
         return root;
     }
 
+    /**
+     * Creates and populates a list of products which contain name, price and image
+     *
+     * @return a list of products
+     */
     private ArrayList<Product> getProductList() {
         ArrayList<Product> products = new ArrayList<>();
 
