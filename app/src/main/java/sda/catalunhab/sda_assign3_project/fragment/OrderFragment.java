@@ -173,6 +173,12 @@ public class OrderFragment extends Fragment  {
      * If the file was created successfully, gets the URI of the file
      * and attaches to the intent so the image will be saved in the path
      * generated to be accessed later.
+     *
+     * References:
+     * Take and return a photo
+     * https://developer.android.com/training/camera/photobasics
+     * Save an image
+     * https://android.jlelse.eu/androids-new-image-capture-from-a-camera-using-file-provider-dd178519a954
      */
     private void takePhotoIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -205,6 +211,10 @@ public class OrderFragment extends Fragment  {
      *                   through its setResult().
      * @param data An Intent, which can return result data to the caller
      *               (various data can be attached to Intent "extras").
+     *
+     * Reference:
+     * Retrieving the saved image
+     * https://developer.android.com/reference/androidx/core/content/FileProvider#GetUri
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -216,6 +226,9 @@ public class OrderFragment extends Fragment  {
 
     /**
      * Sets the adapter for the collection store locations dropdown and attaches to the UI
+     * Reference:
+     * Spinners
+     * https://developer.android.com/guide/topics/ui/controls/spinner
      */
     private void setLocationDropdownValues() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(root.getContext(),
@@ -231,6 +244,12 @@ public class OrderFragment extends Fragment  {
      * address edit text.
      * If delivery is selected, displays the delivery address edit text and hides the store
      * locations dropdown so the two don't overlay.
+     *
+     * Reference:
+     * How to set text view to visible
+     * https://stackoverflow.com/questions/6558364/android-development-toggling-textview-visibility/6558675
+     * Radio buttons
+     * https://developer.android.com/guide/topics/ui/controls/radiobutton
      */
     private void setOnCheckedChangeListenerRadioGroup() {
         order.getRadioGroup(root).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
